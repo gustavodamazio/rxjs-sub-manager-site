@@ -1,0 +1,14 @@
+{
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/bower_components": true,
+    "**/*.code-search": true,
+    "**/dist": true,
+    "**/build": true,
+    "**/coverage": true,
+    "**/out": true,
+    "**/tmp": true,
+    "**/temp": true,
+    "**/.angular/cache": true,
+  }
+}

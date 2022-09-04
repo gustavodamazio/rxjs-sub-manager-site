@@ -1,0 +1,57 @@
+<div
+  class="w-full h-full overflow-auto flex flex-col flex-1 items-center bg-blue-100 sm:p-10 p-0 py-10"
+>
+  <h1 class="!text-2xl !font-display">Rxjs subscription manager</h1>
+  <h1 class="!text-xl !font-display">Open the console (F12)</h1>
+  <div class="flex flex-col items-center flex-1 w-full">
+    <div class="flex items-center justify-center mb-3">
+      <h1
+        class="!font-display !m-0 rounded-full bg-blue-300 text-blue-800 px-2.5 py-1"
+      >
+        @root component
+      </h1>
+      <button mat-icon-button color="accent" matTooltip="Change route" (click)="changeRoute()">
+        <mat-icon class="scale-x-125">sync_alt</mat-icon>
+      </button>
+    </div>
+    <div class="flex flex-col gap-1 sm:min-h-[124px]">
+      <span
+        class="inline-flex items-center justify-start rounded-full bg-purple-200 px-2.5 py-0.5 text-base font-medium text-purple-800 w-full"
+      >
+        @root all active subs:
+
+        <span
+          class="font-bold ml-2"
+          *ngIf="rootSubsSize$ | async; let rootSubsSize; else loading"
+          >{{ rootSubsSize }}</span
+        >
+
+        <ng-template #loading>
+          <mat-spinner
+            class="child:child:!stroke-purple-700"
+            [strokeWidth]="2"
+            [diameter]="17"
+          ></mat-spinner>
+        </ng-template>
+        <span class="text-gray-400 ml-2">(2 subs - Open in root)</span>
+      </span>
+      <span
+        class="inline-flex rounded-full bg-purple-200 px-2.5 py-0.5 text-xs font-medium text-purple-800 w-full"
+        >SUB MANAGER INSTANCES:
+        {{ subscriptionManagerInstancesInApp$ | async }}</span
+      >
+      <span
+        *ngFor="let item of subscriptionManagerActiveSubsNamesInApp$ | async"
+        class="ml-3 inline-flex items-center rounded-full bg-purple-200 px-2.5 py-0.5 text-xs font-medium text-purple-800"
+        ><svg
+          class="-ml-0.5 mr-1.5 h-2 w-2 text-purple-500"
+          fill="currentColor"
+          viewBox="0 0 8 8"
+        >
+          <circle cx="4" cy="4" r="3" /></svg
+        >{{ item }}</span
+      >
+    </div>
+    <router-outlet></router-outlet>
+  </div>
+</div>

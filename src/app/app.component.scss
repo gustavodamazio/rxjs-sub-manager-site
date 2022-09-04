@@ -1,0 +1,13 @@
+app-root {
+  min-height: 0;
+}
+.mat-snack-bar-custom {
+  background-color: theme("colors.slate.900") !important;
+  .mat-simple-snack-bar-content {
+    font-size: theme("fontSize.lg");
+    color: theme("colors.gray.100") !important;
+  }
+  .mat-simple-snackbar-action {
+    color: theme("colors.sky.500") !important;
+  }
+}

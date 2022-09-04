@@ -1,0 +1,44 @@
+<div class="w-full md:min-w-[700px] md:max-w-[700px] h-full flex flex-col items-center justify-start bg-orange-100 p-2 pb-4 mt-5 rounded-lg shadow-md">
+  <h1 class="text-3xl !font-display rounded-full bg-orange-300 text-orange-800 px-2.5 py-1">@parent component</h1>
+  <div class="flex flex-col gap-2 items-center justify-center mb-2">
+    <span
+      class="inline-flex items-center rounded-full bg-cyan-200 px-2.5 py-0.5 text-xs font-medium text-cyan-800"
+      >EMITED EVENTS: {{ emitCount$ | async }}</span
+    >
+    <span
+      class="inline-flex items-center rounded-full bg-green-200 px-2.5 py-0.5 text-xs font-medium text-green-800"
+      >ACTIVE SUBS: {{ subscriptionManagerActiveSubsLength$ | async }}</span
+    >
+    <span
+      class="inline-flex items-center rounded-full bg-red-200 px-2.5 py-0.5 text-xs font-medium text-red-800"
+      >CLOSED SUBS: {{ subscriptionManagerClosedSubsLength$ | async }}</span
+    >
+  </div>
+  <div class="flex flex-col items-center gap-2 w-full">
+    <button
+      mat-raised-button
+      color="primary"
+      class="flex"
+      (click)="openNewSub()"
+    >
+      Open Sub (1 in 1 sec) in @parent
+    </button>
+    <mat-chip-list aria-label="sub selection" class="mat-chip-list-centered">
+      <mat-chip
+        disableRipple
+        *ngFor="let item of activeSubsKeys$ | async"
+        (removed)="closeSub(item.value)"
+        [ngClass]="{
+          '!bg-purple-400': item.value === 'activeSubs$',
+          '!bg-red-400': item.value === null,
+          '!text-white': item.value === 'activeSubs$' || item.value === null
+        }"
+        >{{ item.label }}
+        <button matChipRemove>
+          <mat-icon>cancel</mat-icon>
+        </button></mat-chip
+      >
+    </mat-chip-list>
+  </div>
+  <app-children></app-children>
+</div>
