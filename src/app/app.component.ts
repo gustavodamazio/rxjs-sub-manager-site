@@ -1,12 +1,7 @@
 import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
-import {
-  BehaviorSubject,
-  combineLatest,
-  debounceTime,
-  firstValueFrom,
-  map,
-} from 'rxjs';
+import { faGithub } from '@fortawesome/free-brands-svg-icons';
+import { BehaviorSubject, combineLatest, debounceTime, map } from 'rxjs';
 import {
   SubscriptionManager,
   SubscriptionManagerPublicContext,
@@ -23,6 +18,7 @@ export class AppComponent implements OnInit, OnDestroy {
     prefixId: 'AppComponent-',
   });
   public readonly rootSubsSize$ = new BehaviorSubject<number>(0);
+  public readonly faGithubIcon = faGithub;
   constructor(private router: Router) {}
   // -----------------------------------------------------------------------------------------------------
   // @ Ganchos do ciclo de vida
@@ -53,6 +49,12 @@ export class AppComponent implements OnInit, OnDestroy {
   // -----------------------------------------------------------------------------------------------------
   // @ Métodos públicos
   // -----------------------------------------------------------------------------------------------------
+  public openGithub(): void {
+    window.open(
+      'https://github.com/gustavodamazio/rxjs-subscription-manager',
+      '_blank' // <- This is what makes it open in a new window.
+    );
+  }
   public async changeRoute(): Promise<void> {
     if (this.router.url === '/parent-child') {
       this.router.navigate(['empty']);

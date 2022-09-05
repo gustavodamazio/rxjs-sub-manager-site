@@ -9,9 +9,7 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class EmptyComponent implements OnInit {
   public isLoading$ = new BehaviorSubject(true);
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

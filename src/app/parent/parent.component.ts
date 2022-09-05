@@ -1,8 +1,9 @@
 import { Component, OnDestroy, ViewEncapsulation } from '@angular/core';
 import { uniqueId } from 'lodash';
-import { SnackbarService } from 'src/shared/snackbar.service';
-import { SubscriptionManager } from 'rxjs-sub-manager';
 import { BehaviorSubject, interval, map } from 'rxjs';
+import { SubscriptionManager } from 'rxjs-sub-manager';
+import { SnackbarService } from 'src/shared/snackbar.service';
+
 import { SubOptions } from '../models/sub-options';
 
 @Component({
@@ -41,7 +42,9 @@ export class ParentComponent implements OnDestroy {
           }));
           if (keys.length > 0) {
             this.activeSubsKeys$.next(
-              [{ value: null, label: '* Close all subs' } as SubOptions].concat(keys)
+              [{ value: null, label: '* Close all subs' } as SubOptions].concat(
+                keys
+              )
             );
           } else {
             this.activeSubsKeys$.next([]);

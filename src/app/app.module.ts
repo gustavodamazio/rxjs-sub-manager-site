@@ -14,6 +14,7 @@ import { AppComponent } from './app.component';
 import { ChildrenComponent } from './children/children.component';
 import { ParentComponent } from './parent/parent.component';
 import { EmptyComponent } from './empty/empty.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [AppComponent, ParentComponent, ChildrenComponent, EmptyComponent],
@@ -31,6 +32,7 @@ import { EmptyComponent } from './empty/empty.component';
     MatSnackBarModule,
     MatTooltipModule,
     MatProgressSpinnerModule,
+    FontAwesomeModule,
     //#endregion
   ],
   providers: [],
